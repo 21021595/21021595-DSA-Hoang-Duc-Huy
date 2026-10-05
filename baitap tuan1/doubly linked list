@@ -70,37 +70,46 @@ struct List {
     }
 
     // 4. Thêm tại vị trí i
-    void insertAt(int i, int val) {
-        if (i < 0) {
-            cout << "Vi tri them khong hop le!\n";
-            return;
-        }
-        if (i == 0) {
-            insertHead(val);
-            return;
-        }
-        Node* temp = head;
-        // Tìm node ở vị trí i (vị trí cần chèn vào)
-        for (int j = 0; temp != nullptr && j < i; j++) {
-            temp = temp->next;
-        }
-        
-        // Nếu temp == nullptr và j == i tức là chèn vào ngay sau tail (thêm cuối)
-        if (temp == nullptr) {
-            insertTail(val);
-            return;
-        }
-
-        // Chèn vào giữa temp->prev và temp
-        Node* newNode = createNode(val);
-        Node* previousNode = temp->prev;
-
-        newNode->next = temp;
-        newNode->prev = previousNode;
-        
-        previousNode->next = newNode;
-        temp->prev = newNode;
+   void insertAt(int i, int val) {
+    if (i < 0) {
+        cout << "Vi tri them khong hop le!\n";
+        return;
     }
+    if (i == 0) {
+        insertHead(val);
+        return;
+    }
+
+    Node* temp = head;
+    int j = 0;
+    
+    // Tìm node ở vị trí i
+    for (; temp != nullptr && j < i; j++) {
+        temp = temp->next;
+    }
+
+    // TH1: i lớn hơn số lượng phần tử hiện tại của danh sách
+    if (temp == nullptr && j < i) {
+        cout << "Vi tri them vuot qua do dai danh sach!\n";
+        return;
+    }
+
+    // TH2: i bằng đúng số lượng phần tử (chèn vào cuối danh sách)
+    if (temp == nullptr && j == i) {
+        insertTail(val);
+        return;
+    }
+
+    // TH3: Chèn vào giữa temp->prev và temp
+    Node* newNode = createNode(val);
+    Node* previousNode = temp->prev;
+    
+    newNode->next = temp;
+    newNode->prev = previousNode;
+    previousNode->next = newNode;
+    temp->prev = newNode;
+}
+
 
     // 5. Xóa đầu danh sách
     void deleteHead() {
