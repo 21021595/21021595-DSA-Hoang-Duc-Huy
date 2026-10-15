@@ -203,28 +203,4 @@ struct List {
     }
 };
 
-int main() {
-    List myList;
-    myList.init();
 
-    // Thử nghiệm thêm phần tử
-    myList.insertTail(10);
-    myList.insertTail(20);
-    myList.insertHead(5);
-    myList.insertAt(1, 15); // Danh sách: 5 <=> 15 <=> 10 <=> 20
-
-    myList.traverseForward();  // Kết quả: 5 15 10 20
-    myList.traverseBackward(); // Kết quả: 20 10 15 5 (In ngược trực tiếp)
-
-    cout << "Phan tu tai vi tri 2: " << myList.getAt(2) << "\n"; // Kết quả: 10
-
-    // Thử nghiệm xóa phần tử
-    myList.deleteHead(); // Xóa 5
-    myList.deleteTail(); // Xóa 20 (Chạy cực nhanh nhờ con trỏ tail và prev)
-    myList.deleteAt(1);  // Xóa phần tử vị trí số 1 hiện tại (số 10)
-
-    myList.traverseForward(); // Kết quả còn lại: 15
-
-    myList.clear(); // Dọn dẹp bộ nhớ trước khi thoát
-    return 0;
-}
