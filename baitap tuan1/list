@@ -113,25 +113,4 @@ struct List {
     }
 };
 
-int main() {
-    List myList;
-    myList.init();
 
-    myList.insertTail(10);
-    myList.insertTail(20);
-    myList.insertHead(5);
-    myList.insertAt(1, 15); // Danh sách hiện tại: 5, 15, 10, 20
-
-    myList.traverseForward();  // In ra: 5 15 10 20
-    myList.traverseBackward(); // In ra: 20 10 15 5
-
-    cout << "Phan tu tai vi tri 2: " << myList.getAt(2) << "\n";
-
-    myList.deleteHead();
-    myList.deleteTail();
-    myList.deleteAt(1); // Xóa phần tử ở giữa
-
-    myList.traverseForward();
-
-    return 0;
-}
