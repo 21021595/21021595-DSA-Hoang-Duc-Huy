@@ -9,7 +9,7 @@ struct Node {
 };
  
 // Danh sách liên kết: head + biến đếm n (để size() là O(1))
-struct List {
+struct linkedList {
     Node* head;
     int n; // Số lượng phần tử hiện tại
  
@@ -80,7 +80,7 @@ struct List {
 
 // Đỉnh stack = ĐẦU danh sách
 struct Stack {
-    List l;
+    linkedList l;
  
     void init()          { l.init(); }                  // khởi tạo stack rỗng
  
