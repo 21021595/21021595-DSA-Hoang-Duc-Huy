@@ -1,17 +1,17 @@
 #include <iostream>
 using namespace std;
-
+ 
 const int MAX = 100; // Kích thước tối đa của mảng
-
+ 
 struct List {
     int data[MAX]; // Mảng tĩnh lưu trữ các phần tử
     int n;         // Số lượng phần tử hiện tại trong danh sách
-
+ 
     // Khởi tạo danh sách rỗng
     void init() {
         n = 0;
     }
-
+ 
     // 1. Trả về phần tử tại vị trí i
     int getAt(int i) {
         if (i < 0 || i >= n) {
@@ -20,7 +20,7 @@ struct List {
         }
         return data[i];
     }
-
+ 
     // 2. Thêm vào đầu danh sách (vị trí 0)
     void insertHead(int val) {
         if (n >= MAX) {
@@ -33,7 +33,7 @@ struct List {
         data[0] = val;
         n++;
     }
-
+ 
     // 3. Thêm vào cuối danh sách
     void insertTail(int val) {
         if (n >= MAX) {
@@ -43,7 +43,7 @@ struct List {
         data[n] = val;
         n++;
     }
-
+ 
     // 4. Thêm tại vị trí i
     void insertAt(int i, int val) {
         if (i < 0 || i > n) {
@@ -60,7 +60,7 @@ struct List {
         data[i] = val;
         n++;
     }
-
+ 
     // 5. Xóa đầu danh sách
     void deleteHead() {
         if (n <= 0) {
@@ -72,16 +72,16 @@ struct List {
         }
         n--;
     }
-
-    // 6. Xóa cuối danh sách
-    void deleteTail() {
+ 
+    // 6. Xóa cuối danh sách, trả về phần tử vừa xóa
+    int deleteTail() {
         if (n <= 0) {
             cout << "Danh sach rong!\n";
-            return;
+            return -1;
         }
-        n--;
+        return data[--n]; // giảm n rồi trả về phần tử cuối cũ
     }
-
+ 
     // 7. Xóa tại vị trí i
     void deleteAt(int i) {
         if (i < 0 || i >= n) {
@@ -93,7 +93,7 @@ struct List {
         }
         n--;
     }
-
+ 
     // 8. Duyệt xuôi từ đầu đến cuối
     void traverseForward() {
         cout << "Duyet xuoi: ";
@@ -102,7 +102,7 @@ struct List {
         }
         cout << "\n";
     }
-
+ 
     // 9. Duyệt ngược từ cuối về đầu
     void traverseBackward() {
         cout << "Duyet nguoc: ";
@@ -111,12 +111,15 @@ struct List {
         }
         cout << "\n";
     }
-bool isempty(){
-return (n==0);
-}
-int size() {
+ 
+    // Kiểm tra rỗng
+    bool isempty() {
+        return n == 0;
+    }
+ 
+    // Số phần tử hiện có
+    int size() {
         return n;
     }
 };
-
 
