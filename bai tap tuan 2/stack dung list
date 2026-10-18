@@ -1,1 +1,16 @@
 
+struct Stack {
+    List l;
+ 
+    void init()          { l.init(); }                      // khởi tạo stack rỗng
+ 
+    bool isEmpty()       { return l.isempty(); }            // O(1)
+ 
+    void push(int item)  { l.insertTail(item); }            // O(1)
+ 
+    int  pop()           { return l.deleteTail(); }         // O(1)
+ 
+    int  size()          { return l.size(); }               // O(1)
+ 
+    int  top()           { return l.getAt(l.size() - 1); }  // O(1)
+};
